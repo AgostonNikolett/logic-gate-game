@@ -88,6 +88,7 @@ const GameBoardContent = ({ levelData, onComplete }) => {
                     case 'NAND': newValue = !(valA && valB); break;
                     case 'NOR': newValue = !(valA || valB); break;
                     case 'XNOR': newValue = valA === valB; break;
+                    default: newValue = false;
                 }
             } else if (node.type === 'bulb') {
                 newValue = inputValues[0] || false;
