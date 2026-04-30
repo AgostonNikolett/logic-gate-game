@@ -1,17 +1,87 @@
 [
-  { "id": 1, "title": "1. Scânteia", "difficulty": "Ușor", "description": "Conectează energia la bec.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 200, "value": true }], "gates": [], "target": { "id": "B1", "x": 600, "y": 200 } } },
-  { "id": 2, "title": "2. Inversia", "difficulty": "Ușor", "description": "Becul are nevoie de curent, dar switch-ul este OPRIT (0). Folosește o poartă NOT.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 200, "value": false }], "gates": [{ "id": "G1", "type": "NOT", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
-  { "id": 3, "title": "3. Acordul (AND)", "difficulty": "Ușor", "description": "Poarta AND lasă curentul să treacă doar dacă primește curent prin AMBELE intrări.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }], "gates": [{ "id": "G1", "type": "AND", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
-  { "id": 4, "title": "4. Alternativa (OR)", "difficulty": "Ușor", "description": "Poarta OR are nevoie de cel puțin un semnal activ. Aici doar B are curent.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": false }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }], "gates": [{ "id": "G1", "type": "OR", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
-  { "id": 5, "title": "5. Exclusivitate (XOR)", "difficulty": "Mediu", "description": "XOR se aprinde DOAR dacă sursele sunt diferite. Aici avem ON și OFF, perfect pentru XOR.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "XOR", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
-  { "id": 6, "title": "6. Siguranța (NAND)", "difficulty": "Mediu", "description": "Combinația de surse este OFF-ON. Trebuie să inversezi ieșirea porții AND ca să aprinzi becul (care acum ar trebui să fie stins dacă e NAND). Așteaptă, vrem să aprindem becul, deci ieșirea AND-ului trebuie negată.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": false }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }], "gates": [{ "id": "G1", "type": "AND", "x": 300, "y": 200 }, { "id": "G2", "type": "NOT", "x": 450, "y": 200 }], "target": { "id": "B1", "x": 650, "y": 200 } } },
-  { "id": 7, "title": "7. Triunghiul", "difficulty": "Mediu", "description": "Creează traseul corect având la dispoziție ON, OFF, ON.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [{ "id": "G1", "type": "AND", "x": 250, "y": 150 }, { "id": "G2", "type": "OR", "x": 450, "y": 220 }], "target": { "id": "B1", "x": 650, "y": 220 } } },
-  { "id": 8, "title": "8. Niciuna (NOR)", "difficulty": "Mediu", "description": "Ambele surse sunt OFF. Cum ajungi la ON folosind un OR și un NOT?", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": false }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "OR", "x": 300, "y": 200 }, { "id": "G2", "type": "NOT", "x": 450, "y": 200 }], "target": { "id": "B1", "x": 650, "y": 200 } } },
-  { "id": 9, "title": "9. Parola", "difficulty": "Greu", "description": "Parola fixă este: ON, OFF, ON. Găsește combinația de porți care aprinde becul cu aceste date.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [{ "id": "G1", "type": "NOT", "x": 250, "y": 200 }, { "id": "G2", "type": "AND", "x": 400, "y": 150 }, { "id": "G3", "type": "AND", "x": 550, "y": 220 }], "target": { "id": "B1", "x": 750, "y": 220 } } },
-  { "id": 10, "title": "10. Detectivul", "difficulty": "Greu", "description": "Avem doar un singur semnal ON. Trece-l prin două porți XOR.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": true }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": false }], "gates": [{ "id": "G1", "type": "XOR", "x": 250, "y": 150 }, { "id": "G2", "type": "XOR", "x": 450, "y": 220 }], "target": { "id": "B1", "x": 650, "y": 220 } } },
-  { "id": 11, "title": "11. Multiplexorul Simplu", "difficulty": "Expert", "description": "Conectează corect liniile pentru a selecta semnalul dorit.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "Sel", "x": 50, "y": 350, "value": false }], "gates": [{ "id": "G1", "type": "NOT", "x": 200, "y": 350 }, { "id": "G2", "type": "AND", "x": 350, "y": 150 }, { "id": "G3", "type": "AND", "x": 350, "y": 250 }, { "id": "G4", "type": "OR", "x": 550, "y": 200 }], "target": { "id": "B1", "x": 750, "y": 200 } } },
-  { "id": 12, "title": "12. Egalitate", "difficulty": "Expert", "description": "Sursele sunt identice (OFF, OFF). Aprinde becul.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": false }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "XOR", "x": 300, "y": 200 }, { "id": "G2", "type": "NOT", "x": 450, "y": 200 }], "target": { "id": "B1", "x": 650, "y": 200 } } },
-  { "id": 13, "title": "13. Sistem Alarmă", "difficulty": "Expert", "description": "Doar A și C au curent. Trebuie să activezi alarma folosind minim de resurse.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [{ "id": "G1", "type": "AND", "x": 250, "y": 100 }, { "id": "G2", "type": "AND", "x": 250, "y": 200 }, { "id": "G3", "type": "AND", "x": 250, "y": 300 }, { "id": "G4", "type": "OR", "x": 450, "y": 150 }, { "id": "G5", "type": "OR", "x": 600, "y": 200 }], "target": { "id": "B1", "x": 750, "y": 200 } } },
-  { "id": 14, "title": "14. Half-Adder", "difficulty": "Master", "description": "Calculează bitul de sumă a două numere binare.", "setup": { "switches": [{ "id": "S1", "label": "Bit 1", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "Bit 2", "x": 100, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "XOR", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
-  { "id": 15, "title": "15. The Final Challenge", "difficulty": "Master", "description": "Combină un XOR cu alte elemente pentru a lăsa doar curentul corect să treacă.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": true }, { "id": "S3", "label": "C", "x": 50, "y": 350, "value": false }], "gates": [{ "id": "G1", "type": "XOR", "x": 250, "y": 150 }, { "id": "G2", "type": "NOT", "x": 250, "y": 350 }, { "id": "G3", "type": "AND", "x": 450, "y": 250 }], "target": { "id": "B1", "x": 650, "y": 250 } } }
+  {
+    "id": 1,
+    "title": "Tipul 1: Clasic",
+    "typology": 1,
+    "description": "Porțile sunt pe tablă. Conectează-le corect pentru a aprinde becul.",
+    "setup": {
+      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }],
+      "gates": [{ "id": "G1", "type": "AND", "x": 350, "y": 200 }],
+      "target": { "id": "B1", "x": 600, "y": 200 }
+    }
+  },
+  {
+    "id": 2,
+    "title": "Tipul 2: Constrângere",
+    "typology": 2,
+    "description": "Trage piesele pe masă. Ești OBLIGAT să folosești un OR și un NOT.",
+    "availableGates": ["AND", "OR", "NOT", "XOR"],
+    "requiredGates": ["OR", "NOT"],
+    "setup": {
+      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 200, "value": false }],
+      "gates": [],
+      "target": { "id": "B1", "x": 600, "y": 200 }
+    }
+  },
+  {
+    "id": 3,
+    "title": "Tipul 3: Capcana",
+    "typology": 3,
+    "description": "Alege din inventar poarta corectă. Ai grijă, nu lăsa porți inutile pe ecran!",
+    "availableGates": ["AND", "OR", "XOR", "NAND"],
+    "setup": {
+      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }],
+      "gates": [],
+      "target": { "id": "B1", "x": 600, "y": 200 }
+    }
+  },
+  {
+    "id": 4,
+    "title": "Tipul 4: Reverse Engineering",
+    "typology": 4,
+    "description": "Tabel de Adevăr: Construiește o logică care să aprindă becul DOAR când A=1, B=0 și C=1.",
+    "availableGates": ["AND", "OR", "NOT", "XOR"],
+    "setup": {
+      "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }],
+      "gates": [],
+      "target": { "id": "B1", "x": 700, "y": 200 }
+    }
+  },
+  {
+    "id": 5,
+    "title": "Tipul 5: Debugging",
+    "typology": 5,
+    "description": "Un inginer a greșit schema! Circuitul nu se aprinde la ON și OFF. Găsește poarta greșită, șterge-o și pune una corectă.",
+    "availableGates": ["AND", "OR", "XOR", "NOT"],
+    "setup": {
+      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }],
+      "gates": [{ "id": "G1", "type": "AND", "x": 350, "y": 200 }],
+      "target": { "id": "B1", "x": 600, "y": 200 }
+    }
+  },
+  {
+    "id": 6,
+    "title": "Tipul 6: Universalitate",
+    "typology": 6,
+    "description": "Creează logica unei porți AND (se aprinde doar la ON-ON), dar folosește EXCLUSIV porți NAND.",
+    "availableGates": ["NAND"],
+    "setup": {
+      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }],
+      "gates": [],
+      "target": { "id": "B1", "x": 700, "y": 200 }
+    }
+  },
+  {
+    "id": 7,
+    "title": "Tipul 7: Optimizare Costuri",
+    "typology": 7,
+    "description": "Aprinde becul, dar bugetul este restrâns! Ai voie să folosești MAXIM 2 porți.",
+    "availableGates": ["AND", "OR", "NOT", "XOR"],
+    "maxGates": 2,
+    "setup": {
+      "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": true }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }],
+      "gates": [],
+      "target": { "id": "B1", "x": 600, "y": 200 }
+    }
+  }
 ]
