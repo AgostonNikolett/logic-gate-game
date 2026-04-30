@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import GameBoard from './components/GameBoard';
+import TheoryGuide from './components/TheoryGuide';
 
 // Funcție ajutătoare pentru a sparge lista de niveluri în rânduri (ex: câte 5 per rând)
 const chunkArray = (arr, size) => {
@@ -13,6 +14,7 @@ const chunkArray = (arr, size) => {
 function App() {
     const [levels, setLevels] = useState([]);
     const [selectedLevel, setSelectedLevel] = useState(null);
+    const [isHelpOpen, setIsHelpOpen] = useState(false);
 
     // Stocăm progresul complex: nivelul deblocat + stelele obținute per nivel
     const [progress, setProgress] = useState({
@@ -80,6 +82,16 @@ function App() {
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
 
+                    {/* BUTONUL DE AJUTOR (NOU) */}
+                    <button
+                        onClick={() => setIsHelpOpen(true)}
+                        style={{ background: '#0f172a', color: '#cbd5e1', border: '1px solid #475569', padding: '10px 15px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px', transition: 'all 0.2s' }}
+                        onMouseEnter={e => { e.target.style.background = '#334155'; e.target.style.color = '#fff'; }}
+                        onMouseLeave={e => { e.target.style.background = '#0f172a'; e.target.style.color = '#cbd5e1'; }}
+                    >
+                        <span>💡</span> Teorie & Ajutor
+                    </button>
+
                     {/* BADGE RANK & XP */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '15px', background: '#0f172a', padding: '8px 20px', borderRadius: '30px', border: `1px solid ${badgeColor}`, boxShadow: `inset 0 0 10px rgba(0,0,0,0.5), 0 0 15px ${badgeColor}40` }}>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', lineHeight: '1.2' }}>
@@ -96,6 +108,9 @@ function App() {
                     )}
                 </div>
             </header>
+
+            {/* Afișarea Manualului de Teorie (Suprapus) */}
+            {isHelpOpen && <TheoryGuide onClose={() => setIsHelpOpen(false)} />}
 
             <main style={{
                 flexGrow: 1,
