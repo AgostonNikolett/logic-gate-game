@@ -60,12 +60,19 @@ const GameBoardContent = ({ levelData, onComplete }) => {
     const isValidConnection = useCallback((connection) => {
         const sourceNode = nodes.find((n) => n.id === connection.source);
         const targetNode = nodes.find((n) => n.id === connection.target);
+
         if (!sourceNode || !targetNode || sourceNode.id === targetNode.id) return false;
-        if (sourceNode.type === 'switch' && targetNode.type === 'bulb') {
-            showWarning("Strict: Trece semnalul prin porți!"); return false;
+
+        const hasPreplacedGates = levelData.setup.gates && levelData.setup.gates.length > 0;
+        const hasInventoryGates = levelData.availableGates && levelData.availableGates.length > 0;
+
+        if ((hasPreplacedGates || hasInventoryGates) && sourceNode.type === 'switch' && targetNode.type === 'bulb') {
+            showWarning("Strict: Trece semnalul prin porți!");
+            return false;
         }
+
         return true;
-    }, [nodes]);
+    }, [nodes, levelData]);
 
     const showWarning = (msg) => { setWarningMessage(msg); setTimeout(() => setWarningMessage(null), 3500); };
 
