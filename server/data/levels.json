@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Fluxul de Energie",
+    "description": "Apasă switch-ul pentru a aprinde becul.",
+    "difficulty": "Beginner",
+    "setup": {
+      "switches": [{ "id": "s1", "label": "A", "x": 100, "y": 200 }],
+      "gates": [],
+      "target": { "id": "bulb1", "x": 500, "y": 200 }
+    },
+    "expectedLogic": "s1"
+  },
+  {
+    "id": 2,
+    "title": "Negarea",
+    "description": "Becul trebuie să fie aprins când switch-ul este oprit.",
+    "difficulty": "Beginner",
+    "setup": {
+      "switches": [{ "id": "s1", "label": "A", "x": 100, "y": 200 }],
+      "gates": [{ "id": "g1", "type": "NOT", "x": 300, "y": 200 }],
+      "target": { "id": "bulb1", "x": 500, "y": 200 }
+    },
+    "expectedLogic": "!s1"
+  }
+]

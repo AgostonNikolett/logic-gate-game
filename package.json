@@ -1,0 +1,11 @@
+{
+  "name": "logic-gate-game",
+  "scripts": {
+    "client": "npm run dev --prefix client",
+    "server": "cd server && npx nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
