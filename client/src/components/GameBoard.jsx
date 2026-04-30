@@ -7,6 +7,7 @@ import GateNode from './Nodes/GateNode';
 import BulbNode from './Nodes/BulbNode';
 import Avatar from './Avatar';
 import { evaluateCircuit } from '../rules/RuleEngine';
+import { playSound } from '../audio';
 
 const nodeTypes = { switch: SwitchNode, gate: GateNode, bulb: BulbNode };
 
@@ -66,16 +67,19 @@ const GameBoardContent = ({ levelData, onComplete }) => {
         const hasInventoryGates = levelData.availableGates && levelData.availableGates.length > 0;
 
         if ((hasPreplacedGates || hasInventoryGates) && sourceNode.type === 'switch' && targetNode.type === 'bulb') {
-            // Limbajul lui Spark pentru reguli
             showWarning("Hopaa! Nu o lua pe scurtătură! Curentul trebuie trecut prin porțile logice, altfel ardem becul.");
             return false;
         }
         return true;
     }, [nodes, levelData]);
 
-    const showWarning = (msg) => { setWarningMessage(msg); setTimeout(() => setWarningMessage(null), 4000); };
+    const showWarning = (msg) => {
+        playSound.error();
+        setWarningMessage(msg);
+        setTimeout(() => setWarningMessage(null), 4000); };
 
     const handleTogglePower = () => {
+        playSound.switch();
         if (!isPowerOn && !hasWon) setTestAttempts(prev => prev + 1);
         setIsPowerOn(!isPowerOn);
     };
@@ -127,10 +131,17 @@ const GameBoardContent = ({ levelData, onComplete }) => {
             const evaluation = evaluateCircuit(updatedNodes, updatedEdges, levelData);
             setRuleErrorMsg(evaluation.msg);
 
+            if (evaluation.msg) {
+                playSound.error();
+            }
+
             if (evaluation.isWon) {
                 setHasWon(true);
+                playSound.win();
+
                 let stars = 3;
-                if (testAttempts > 1) stars -= 1;
+                if (testAttempts === 2) stars -= 1;
+                else if (testAttempts > 2) stars -= 2;
                 const gateCount = updatedNodes.filter(n => n.type === 'gate').length;
                 const minG = levelData.minGates || 0;
                 const extraGates = gateCount - minG;
