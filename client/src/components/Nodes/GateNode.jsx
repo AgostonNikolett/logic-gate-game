@@ -1,40 +1,23 @@
 import { Handle, Position } from '@xyflow/react';
 
-// Stiluri simple pentru Handles
-const handleStyle = { background: '#555', width: '8px', height: '8px' };
-
 const GateNode = ({ data }) => {
-    const isUnary = data.label === 'NOT'; // NOT are o singura intrare
+    const isUnary = data.label === 'NOT';
+    const handleStyle = { background: '#94a3b8', width: '10px', height: '10px', left: '-5px' };
 
     return (
-        <div style={{
-            padding: '10px',
-            borderRadius: '5px',
-            background: '#e0f2fe', // Albastru deschis
-            border: '1px solid #0369a1',
-            minWidth: '100px',
-            textAlign: 'center',
-            fontFamily: 'monospace'
-        }}>
-            {/* Intrarile (Targets) la stanga */}
+        <div style={{ padding: '15px', borderRadius: '12px', background: '#1e293b', border: '2px solid #3b82f6', width: '100px', textAlign: 'center', color: '#60a5fa', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.5)' }}>
             {isUnary ? (
-                // O singura intrare pe centru pentru NOT
                 <Handle type="target" position={Position.Left} id="a" style={handleStyle} />
             ) : (
-                // Doua intrari pentru restul (a si b)
                 <>
                     <Handle type="target" position={Position.Left} id="a" style={{ ...handleStyle, top: '30%' }} />
                     <Handle type="target" position={Position.Left} id="b" style={{ ...handleStyle, top: '70%' }} />
                 </>
             )}
 
-            {/* Simbolul porții */}
-            <div style={{ fontWeight: 'bold', fontSize: '18px', padding: '10px 0' }}>
-                {data.label}
-            </div>
+            <div style={{ fontWeight: '900', fontSize: '20px', letterSpacing: '2px' }}>{data.label}</div>
 
-            {/* Iesirea (Source) la dreapta */}
-            <Handle type="source" position={Position.Right} id="output" style={handleStyle} />
+            <Handle type="source" position={Position.Right} id="output" style={{ background: '#f8fafc', width: '12px', height: '12px', right: '-6px' }} />
         </div>
     );
 };

@@ -1,36 +1,15 @@
 import { Handle, Position } from '@xyflow/react';
 
 const SwitchNode = ({ data, id }) => {
-    // Functie pentru a trimite schimbarea de stare catre parinte (GameBoard)
-    const onChange = (evt) => {
-        if (data.onSwitchChange) {
-            data.onSwitchChange(id, evt.target.checked);
-        }
-    };
-
     return (
-        <div style={{
-            padding: '10px',
-            borderRadius: '5px',
-            background: data.value ? '#a7f3d0' : '#fecaca', // Verde daca e ON, Rosu daca e OFF
-            border: '1px solid #777',
-            minWidth: '80px',
-            textAlign: 'center'
-        }}>
-            <div style={{ fontWeight: 'bold' }}>{data.label}</div>
-            <input
-                type="checkbox"
-                checked={data.value || false}
-                onChange={onChange}
-                style={{ cursor: 'pointer', marginTop: '5px' }}
-            />
-            {/* Handle de iesire (Source) la dreapta */}
-            <Handle
-                type="source"
-                position={Position.Right}
-                id="output"
-                style={{ background: '#555', width: '8px', height: '8px' }}
-            />
+        <div style={{ padding: '15px', borderRadius: '8px', background: data.value ? '#059669' : '#9f1239', color: 'white', border: '2px solid #cbd5e1', width: '100px', textAlign: 'center', boxShadow: data.value ? '0 0 20px #10b981' : 'none', transition: 'all 0.3s' }}>
+            <div style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>{data.label}</div>
+            <button
+                onClick={() => data.onChange(id, !data.value)}
+                style={{ width: '100%', padding: '8px', cursor: 'pointer', background: '#f8fafc', color: '#0f172a', border: 'none', borderRadius: '4px', fontWeight: 'bold' }}>
+                {data.value ? 'ON' : 'OFF'}
+            </button>
+            <Handle type="source" position={Position.Right} style={{ background: '#f8fafc', width: '12px', height: '12px', right: '-6px' }} />
         </div>
     );
 };

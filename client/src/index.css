@@ -1,0 +1,28 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0f172a; /* Slate 900 */
+    color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Stiluri pentru firele animate din React Flow */
+.react-flow__edge-path {
+    stroke-width: 3;
+    transition: stroke 0.3s ease;
+}
+
+.react-flow__edge.active-edge .react-flow__edge-path {
+    stroke: #10b981 !important; /* Verde neon pt "Curent ON" */
+    filter: drop-shadow(0 0 5px #10b981);
+}
+
+.react-flow__edge.inactive-edge .react-flow__edge-path {
+    stroke: #ef4444 !important; /* Roșu pt "Curent OFF" */
+}
