@@ -1,87 +1,38 @@
 [
-  {
-    "id": 1,
-    "title": "Tipul 1: Clasic",
-    "typology": 1,
-    "description": "Porțile sunt pe tablă. Conectează-le corect pentru a aprinde becul.",
-    "setup": {
-      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }],
-      "gates": [{ "id": "G1", "type": "AND", "x": 350, "y": 200 }],
-      "target": { "id": "B1", "x": 600, "y": 200 }
-    }
-  },
-  {
-    "id": 2,
-    "title": "Tipul 2: Constrângere",
-    "typology": 2,
-    "description": "Trage piesele pe masă. Ești OBLIGAT să folosești un OR și un NOT.",
-    "availableGates": ["AND", "OR", "NOT", "XOR"],
-    "requiredGates": ["OR", "NOT"],
-    "setup": {
-      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 200, "value": false }],
-      "gates": [],
-      "target": { "id": "B1", "x": 600, "y": 200 }
-    }
-  },
-  {
-    "id": 3,
-    "title": "Tipul 3: Capcana",
-    "typology": 3,
-    "description": "Alege din inventar poarta corectă. Ai grijă, nu lăsa porți inutile pe ecran!",
-    "availableGates": ["AND", "OR", "XOR", "NAND"],
-    "setup": {
-      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }],
-      "gates": [],
-      "target": { "id": "B1", "x": 600, "y": 200 }
-    }
-  },
-  {
-    "id": 4,
-    "title": "Tipul 4: Reverse Engineering",
-    "typology": 4,
-    "description": "Tabel de Adevăr: Construiește o logică care să aprindă becul DOAR când A=1, B=0 și C=1.",
-    "availableGates": ["AND", "OR", "NOT", "XOR"],
-    "setup": {
-      "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }],
-      "gates": [],
-      "target": { "id": "B1", "x": 700, "y": 200 }
-    }
-  },
-  {
-    "id": 5,
-    "title": "Tipul 5: Debugging",
-    "typology": 5,
-    "description": "Un inginer a greșit schema! Circuitul nu se aprinde la ON și OFF. Găsește poarta greșită, șterge-o și pune una corectă.",
-    "availableGates": ["AND", "OR", "XOR", "NOT"],
-    "setup": {
-      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }],
-      "gates": [{ "id": "G1", "type": "AND", "x": 350, "y": 200 }],
-      "target": { "id": "B1", "x": 600, "y": 200 }
-    }
-  },
-  {
-    "id": 6,
-    "title": "Tipul 6: Universalitate",
-    "typology": 6,
-    "description": "Creează logica unei porți AND (se aprinde doar la ON-ON), dar folosește EXCLUSIV porți NAND.",
-    "availableGates": ["NAND"],
-    "setup": {
-      "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }],
-      "gates": [],
-      "target": { "id": "B1", "x": 700, "y": 200 }
-    }
-  },
-  {
-    "id": 7,
-    "title": "Tipul 7: Optimizare Costuri",
-    "typology": 7,
-    "description": "Aprinde becul, dar bugetul este restrâns! Ai voie să folosești MAXIM 2 porți.",
-    "availableGates": ["AND", "OR", "NOT", "XOR"],
-    "maxGates": 2,
-    "setup": {
-      "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": true }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }],
-      "gates": [],
-      "target": { "id": "B1", "x": 600, "y": 200 }
-    }
-  }
+  { "id": 1, "title": "1. Scânteia", "difficulty": "M1 - Baze", "typology": 1, "description": "Modulul 1: Bazele. Trage un fir de la sursa A către Bec. Apasă TESTEAZĂ.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 200, "value": true }], "gates": [], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 2, "title": "2. Inversia (NOT)", "difficulty": "M1 - Baze", "typology": 1, "description": "Sursa e OFF, dar becul vrea curent. Poarta NU (NOT) inversează semnalul din 0 în 1.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 200, "value": false }], "gates": [{ "id": "G1", "type": "NOT", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 3, "title": "3. Acordul (AND)", "difficulty": "M1 - Baze", "typology": 1, "description": "Poarta SI (AND) lasă curentul să treacă DOAR dacă ambele intrări sunt ON.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }], "gates": [{ "id": "G1", "type": "AND", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 4, "title": "4. Alternativa (OR)", "difficulty": "M1 - Baze", "typology": 1, "description": "Poarta SAU (OR) se activează dacă MĂCAR UNA din surse este ON.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": false }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }], "gates": [{ "id": "G1", "type": "OR", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
+
+  { "id": 5, "title": "5. Libertate", "difficulty": "M2 - Primele Combinații", "typology": 2, "description": "Modulul 2. Acum ai un INVENTAR în stânga! Trage o poartă AND pe ecran.", "availableGates": ["AND", "OR", "NOT"], "requiredGates": ["AND"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }], "gates": [], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 6, "title": "6. Siguranța Manuală", "difficulty": "M2 - Primele Combinații", "typology": 2, "description": "Sursele sunt ON-ON. Vrem ca becul să fie aprins doar când e OFF-OFF. Folosește OR și NOT.", "availableGates": ["AND", "OR", "NOT"], "requiredGates": ["OR", "NOT"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": false }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }], "gates": [], "target": { "id": "B1", "x": 700, "y": 200 } } },
+  { "id": 7, "title": "7. Triunghiul Logic", "difficulty": "M2 - Primele Combinații", "typology": 3, "description": "Alege piesele corecte din inventar pentru a lega toate cele 3 surse.", "availableGates": ["AND", "OR", "NOT"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [], "target": { "id": "B1", "x": 650, "y": 200 } } },
+  { "id": 8, "title": "8. Reparatorul", "difficulty": "M2 - Primele Combinații", "typology": 5, "description": "Un inginer a greșit schema! Circuitul nu merge. Șterge poarta greșită și pune una bună din inventar.", "availableGates": ["AND", "OR", "NOT"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "AND", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 9, "title": "9. Gândește Invers", "difficulty": "M2 - Primele Combinații", "typology": 4, "description": "Tabel de adevăr: Alege tu poarta corectă pentru sursele: ON, OFF, ON.", "availableGates": ["AND", "OR", "NOT"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [], "target": { "id": "B1", "x": 700, "y": 200 } } },
+  { "id": 10, "title": "10. Primul Buget", "difficulty": "M2 - Primele Combinații", "typology": 7, "description": "Optimizare! Aprinde becul folosind MAXIM 2 porți logice.", "availableGates": ["AND", "OR", "NOT"], "maxGates": 2, "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": true }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [], "target": { "id": "B1", "x": 650, "y": 200 } } },
+
+  { "id": 11, "title": "11. Exclusivitate (XOR)", "difficulty": "M3 - Diferența", "typology": 1, "description": "Modulul 3. Noua poartă XOR (SAU-EXCLUSIV) lasă curentul DOAR dacă sursele sunt diferite (1-0 sau 0-1).", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "XOR", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 12, "title": "12. Egalitate (XNOR)", "difficulty": "M3 - Diferența", "typology": 1, "description": "Poarta XNOR (SAU-EXCLUSIV NEGAT) e inversul lui XOR. Curentul trece DOAR dacă sursele sunt la fel (1-1 sau 0-0).", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": false }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "XNOR", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 13, "title": "13. Alege corect", "difficulty": "M3 - Diferența", "typology": 3, "description": "Inventarul are acum XOR și XNOR. Ambele surse sunt ON. Ce poartă folosești?", "availableGates": ["XOR", "XNOR"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }], "gates": [], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 14, "title": "14. Detectivul", "difficulty": "M3 - Diferența", "typology": 2, "description": "Avem 3 surse. Folosește două porți XOR din inventar pentru a afla dacă numărul de surse active este impar.", "availableGates": ["XOR", "XNOR"], "requiredGates": ["XOR"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": true }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": false }], "gates": [], "target": { "id": "B1", "x": 650, "y": 200 } } },
+  { "id": 15, "title": "15. Gemeni", "difficulty": "M3 - Diferența", "typology": 3, "description": "Capcană: Trebuie să treci un semnal printr-o poartă de egalitate și să conectezi și restul.", "availableGates": ["XOR", "XNOR", "AND"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [], "target": { "id": "B1", "x": 750, "y": 200 } } },
+
+  { "id": 16, "title": "16. Parola Complexă", "difficulty": "M4 - Combinate", "typology": 3, "description": "Modulul 4: Acum combinăm tot! Ai la dispoziție AND, OR, NOT, XOR, XNOR.", "availableGates": ["AND", "OR", "NOT", "XOR", "XNOR"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [], "target": { "id": "B1", "x": 750, "y": 200 } } },
+  { "id": 17, "title": "17. Bug în Parolă", "difficulty": "M4 - Combinate", "typology": 5, "description": "Repară circuitul! Cineva a pus un XOR unde trebuia să fie o poartă de egalitate (XNOR).", "availableGates": ["AND", "OR", "NOT", "XOR", "XNOR"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 150, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "XOR", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 650, "y": 200 } } },
+  { "id": 18, "title": "18. Calea Scurtă", "difficulty": "M4 - Combinate", "typology": 7, "description": "Optimizare! Ai un buget de maxim 2 porți logice.", "availableGates": ["AND", "OR", "NOT", "XOR", "XNOR"], "maxGates": 2, "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [], "target": { "id": "B1", "x": 650, "y": 200 } } },
+  { "id": 19, "title": "19. Jumătate de Sumator", "difficulty": "M4 - Combinate", "typology": 2, "description": "Construiește baza calculatoarelor: combină un XOR și un AND.", "availableGates": ["AND", "OR", "XOR", "XNOR"], "requiredGates": ["XOR", "AND"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 250, "value": false }], "gates": [], "target": { "id": "B1", "x": 700, "y": 200 } } },
+  { "id": 20, "title": "20. Capcana Mare", "difficulty": "M4 - Combinate", "typology": 3, "description": "Nu te lăsa păcălit de inventarul mare. Alege fix ce îți trebuie.", "availableGates": ["AND", "OR", "NOT", "XOR", "XNOR"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": true }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": false }], "gates": [], "target": { "id": "B1", "x": 750, "y": 200 } } },
+  { "id": 21, "title": "21. Multiplexor Simplu", "difficulty": "M4 - Combinate", "typology": 1, "description": "Sursa C alege dacă trece A sau B. Rezolvă logica de pe ecran.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "Sel", "x": 50, "y": 350, "value": false }], "gates": [{ "id": "G1", "type": "NOT", "x": 200, "y": 350 }, { "id": "G2", "type": "AND", "x": 350, "y": 150 }, { "id": "G3", "type": "AND", "x": 350, "y": 250 }, { "id": "G4", "type": "OR", "x": 550, "y": 200 }], "target": { "id": "B1", "x": 750, "y": 200 } } },
+
+  { "id": 22, "title": "22. Siguranța (NAND)", "difficulty": "M5 - Universale", "typology": 1, "description": "Modulul 5: Poarta SI-NU (NAND). Curentul trece MEREU, excepție făcând atunci când ambele surse sunt ON (atunci se oprește).", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "NAND", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 23, "title": "23. Niciuna (NOR)", "difficulty": "M5 - Universale", "typology": 1, "description": "Poarta SAU-NU (NOR). Curentul trece DOAR dacă ambele surse sunt OFF (0-0).", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": false }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": false }], "gates": [{ "id": "G1", "type": "NOR", "x": 350, "y": 200 }], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 24, "title": "24. Construiește un NOT", "difficulty": "M5 - Universale", "typology": 6, "description": "Știai că NAND este o poartă universală? Transformă un NAND într-un NOT introducând același semnal în ambele intrări.", "availableGates": ["NAND"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 200, "value": false }], "gates": [], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 25, "title": "25. Celălalt NOT", "difficulty": "M5 - Universale", "typology": 6, "description": "Același truc funcționează și pentru NOR. Folosește exclusiv o poartă NOR pentru a inversa semnalul.", "availableGates": ["NOR"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 200, "value": false }], "gates": [], "target": { "id": "B1", "x": 600, "y": 200 } } },
+  { "id": 26, "title": "26. Falsul AND", "difficulty": "M5 - Universale", "typology": 6, "description": "Creează logica unei porți AND (se aprinde la 1-1), folosind DOAR două porți NAND din inventar.", "availableGates": ["NAND"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 100, "y": 150, "value": true }, { "id": "S2", "label": "B", "x": 100, "y": 250, "value": true }], "gates": [], "target": { "id": "B1", "x": 700, "y": 200 } } },
+
+  { "id": 27, "title": "27. Haosul Total", "difficulty": "M6 - Masterat", "typology": 3, "description": "Modulul 6: Testul Final. Ai la dispoziție absolut toate cele 7 porți. Alege combinația corectă.", "availableGates": ["AND", "OR", "NOT", "XOR", "XNOR", "NAND", "NOR"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [], "target": { "id": "B1", "x": 750, "y": 200 } } },
+  { "id": 28, "title": "28. Dedublarea", "difficulty": "M6 - Masterat", "typology": 5, "description": "Repară circuitul. Unul din semnale a fost negat greșit. Ai acces la tot inventarul.", "availableGates": ["AND", "OR", "NOT", "XOR", "XNOR", "NAND", "NOR"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": true }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": false }], "gates": [{ "id": "G1", "type": "NOR", "x": 300, "y": 150 }, { "id": "G2", "type": "NOT", "x": 450, "y": 220 }], "target": { "id": "B1", "x": 700, "y": 220 } } },
+  { "id": 29, "title": "29. Alarma Majoritară", "difficulty": "M6 - Masterat", "typology": 1, "description": "Circuit complex: Alarma (becul) trebuie să sune dacă MĂCAR două surse din trei sunt activate.", "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": true }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [{ "id": "G1", "type": "AND", "x": 250, "y": 100 }, { "id": "G2", "type": "AND", "x": 250, "y": 200 }, { "id": "G3", "type": "AND", "x": 250, "y": 300 }, { "id": "G4", "type": "OR", "x": 450, "y": 150 }, { "id": "G5", "type": "OR", "x": 600, "y": 200 }], "target": { "id": "B1", "x": 750, "y": 200 } } },
+  { "id": 30, "title": "30. Optimizare Extremă", "difficulty": "M6 - Masterat", "typology": 7, "description": "Ai un buget extrem de strâns: MAXIM 2 porți. Dar ai acces la absolut toate tipurile. Gândește eficient!", "availableGates": ["AND", "OR", "NOT", "XOR", "XNOR", "NAND", "NOR"], "maxGates": 2, "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": false }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": false }], "gates": [], "target": { "id": "B1", "x": 700, "y": 200 } } },
+  { "id": 31, "title": "31. Ultimul Exam", "difficulty": "M6 - Masterat", "typology": 2, "description": "Asamblează logica perfectă impusă de profesor. Trebuie să folosești un NAND, un XNOR și un OR.", "availableGates": ["AND", "OR", "NOT", "XOR", "XNOR", "NAND", "NOR"], "requiredGates": ["NAND", "XNOR", "OR"], "setup": { "switches": [{ "id": "S1", "label": "A", "x": 50, "y": 100, "value": false }, { "id": "S2", "label": "B", "x": 50, "y": 200, "value": true }, { "id": "S3", "label": "C", "x": 50, "y": 300, "value": true }], "gates": [], "target": { "id": "B1", "x": 800, "y": 200 } } }
 ]
